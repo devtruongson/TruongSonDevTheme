@@ -1,0 +1,16 @@
+.site-nav__dropdown {
+    /* display    : none; */
+    max-height : calc(100vh - 122px);
+    overflow   : scroll;
+    padding-top: 26px;
+    position   : relative;
+    z-index    : 5
+}
+
+@media screen and (min-width:1025px) {
+    .site-nav__dropdown {
+        padding : 54px 0 60px;
+        position: absolute;
+        z-index : 0
+    }
+}

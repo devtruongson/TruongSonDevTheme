@@ -1,92 +1,84 @@
 <div class="fixed top-0 left-0 right-0 z-[10000]">
-  {% render 'promo-bar' %}
-  <header class="site-header">
-    <div
-      class="site-header__wrapper wrapper flex items-center justify-between z-[10000]"
-    >
-      <nav>
-        <ul class="flex items-center space-x-4 font-sofia font-[600] text-[20px]">
-          <li class="flex items-center gap-1">
-            Shop
-            {{- 'icon-down.svg' | inline_asset_content -}}
-            {% render 'dropdown-wrapper' %}
-          </li>
-          <li class="flex items-center gap-1">
-            Discover
-            {{- 'icon-down.svg' | inline_asset_content -}}
-          </li>
-          <li class="flex items-center gap-1">
-            <a href="#">BYOB</a>
-          </li>
-        </ul>
-      </nav>
-      <a title="Home" href="{{ routes.root_url }}" class="h-[39px] flex justify-center w-full">
-        <img
-          src="{{ 'logo-lg.webp' | asset_url }}"
-          alt="asd"
-          width="368"
-          class="mx-auto max-h-full logo-header absolute z-[1000] block"
-          height="38"
-          loading="lazy"
-        >
-        <img
-          src="{{ 'logo-second.avif' | asset_url }}"
-          alt="asd"
-          width="94"
-          class="mx-auto logo-header-second h-[94px] w-[99px] absolute top-[12px] z-[1000] hidden"
-          height="88"
-          loading="lazy"
-        >
-      </a>
-      <ul class="flex items-center space-x-4">
-        <li class="flex items-center gap-1">
-          <button class="font-sofia font-[600] text-[20px] whitespace-nowrap">$ USD</button>
-          {{- 'icon-down.svg' | inline_asset_content -}}
-        </li>
-        <li class="flex items-center gap-1">
-          <button class="font-sofia font-[600] text-[20px]">
-            {{- 'icon-search.svg' | inline_asset_content -}}
-            {% comment %} {{- 'icon-close.svg' | inline_asset_content -}} {% endcomment %}
-          </button>
-        </li>
-        <li class="flex items-center gap-1 font-sofia font-[600] text-[20px]">
-          <a href="#">
-            {{- 'icon-user.svg' | inline_asset_content -}}
-          </a>
-        </li>
-        <li class="flex items-center gap-1">
-          <button class="font-sofia font-[600] text-[20px]">
-            {{- 'icon-cart.svg' | inline_asset_content -}}
-          </button>
-        </li>
-      </ul>
-    </div>
-  </header>
-  <div class="header-divider width-base"></div>
+    {% render 'promo-bar' %}
+    <header class="site-header">
+        <div class="site-header__wrapper wrapper flex items-center justify-between z-[10000]">
+            <nav class="w-[calc(100%/3)]">
+                <ul
+                    class="flex items-center font-sofia font-[600] text-[20px] [&>li]:mr-[27px] [&>li]:leading-[28px] pt-[1px]">
+                    <li class="flex pb-[8px] mt-[5px] pr-[5px] [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[3px]">
+                        <span class="relative z-[99999999]">
+                            {{- 'icon-menu.svg' | inline_asset_content -}}
+                            Shop
+                        </span>
+                        {{- 'icon-down.svg' | inline_asset_content -}}
+                        {% render 'dropdown-wrapper' %}
+                    </li>
+                    <li class="flex pb-[8px] mt-[5px] pr-[5px] [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[3px]">
+                        <span class="relative z-[99999999]">Discover</span>
+                        {{- 'icon-down.svg' | inline_asset_content -}}
+                    </li>
+                    <li class="flex pb-[8px] mt-[5px] pr-[5px]">
+                        <a href="#">BYOB</a>
+                    </li>
+                </ul>
+            </nav>
+            <a class="w-[calc(100%/3)] h-[39px] flex justify-center" title="Home" href="{{ routes.root_url }}">
+                <img src="{{ 'logo-lg.webp' | asset_url }}" alt="asd" width="368"
+                    class="mx-auto max-h-full logo-header absolute z-[999999] block" height="38" loading="lazy">
+                <img src="{{ 'logo-second.avif' | asset_url }}" alt="asd" width="94"
+                    class="mx-auto logo-header-second h-[94px] w-[99px] absolute top-[18px] z-[999999] hidden" height="88"
+                    loading="lazy">
+            </a>
+            <ul class="flex items-center w-[calc(100%/3)] [&>li]:leading-[28px] justify-end">
+                <li class="flex items-center gap-1 mr-[30px] [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[-6px]">
+                    <button class="text-[18px] whitespace-nowrap leading-[28px] relative z-[99999999]">$ USD</button>
+                    {{- 'icon-down.svg' | inline_asset_content -}}
+                </li>
+                <li class="flex items-center gap-1 mr-[32px] relative z-[99999999]">
+                    <button class="text-[20px]">
+                        {{- 'icon-search.svg' | inline_asset_content -}}
+                        {% comment %} {{- 'icon-close.svg' | inline_asset_content -}} {% endcomment %}
+                    </button>
+                </li>
+                <li class="flex items-center gap-1 text-[20px] mr-[32px] pb-[2px] relative z-[99999999]">
+                    <button class="text-[20px]">
+                        {{- 'icon-user.svg' | inline_asset_content -}}
+                    </button>
+                </li>
+                <li class="flex items-center gap-1 pb-[2px] relative z-[99999999]">
+                    <button class="text-[20px]">
+                        {{- 'icon-cart.svg' | inline_asset_content -}}
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="header-divider width-base"></div>
+    </header>
 </div>
+
 
 {% schema %}
 {
-  "name": "`",
-  "settings": [
-    {
-      "type": "text",
-      "id": "promo_1",
-      "label": "Promo message 1",
-      "default": "✨ Sign up for 15% OFF your order ✨"
-    },
-    {
-      "type": "text",
-      "id": "promo_2",
-      "label": "Promo message 2",
-      "default": "📣 NEW! Root Refresh Dry Shampoo 📣"
-    },
-    {
-      "type": "text",
-      "id": "promo_3",
-      "label": "Promo message 3",
-      "default": "FREE Shipping on US orders +$50"
-    }
-  ]
+    "name": "`",
+    "settings": [
+        {
+            "type": "text",
+            "id": "promo_1",
+            "label": "Promo message 1",
+            "default": "✨ Sign up for 15% OFF your order ✨"
+        },
+        {
+            "type": "text",
+            "id": "promo_2",
+            "label": "Promo message 2",
+            "default": "📣 NEW! Root Refresh Dry Shampoo 📣"
+        },
+        {
+            "type": "text",
+            "id": "promo_3",
+            "label": "Promo message 3",
+            "default": "FREE Shipping on US orders +$50"
+        }
+    ]
 }
 {% endschema %}
