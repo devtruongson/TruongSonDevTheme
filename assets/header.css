@@ -28,21 +28,6 @@
     }
 }
 
-@media screen and (min-width:1025px) {
-    .site-header:before {
-        background-color: #fff5ec;
-        bottom: 0;
-        content: "";
-        display: block;
-        height: 100%;
-        left: 0;
-        pointer-events: none;
-        position: absolute;
-        width: 100%;
-        z-index: 1
-    }
-}
-
 .site-header__wrapper {
     --wrapper-padding-x: 27px;
     align-items: center;
@@ -97,11 +82,4 @@
     z-index: 2;
     left: 50%;
     transform: translate(-50%, 100%);
-}
-
-@media screen and (min-width: 1400px) {
-    .header-divider {
-        max-width: 1602px;
-        width: calc(100% - 158px);
-    }
 }
