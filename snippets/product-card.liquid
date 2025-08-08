@@ -1,0 +1,50 @@
+{% style %}
+{% comment %}
+    this css code coppied from w3school.com
+    link - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_opacity
+{% endcomment %}
+  .container {
+    position: relative;
+  }
+
+  .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+  }
+
+  .middle {
+    transition: 0.5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .container:hover .image {
+    opacity: 0.3;
+  }
+
+  .container:hover .middle {
+    opacity: 1;
+  }
+{% endstyle %}
+
+<div class="product text-center">
+  <div class="container">
+    <img src="{{ product.featured_image | img_url: '250x300' }}" alt="" class="image">
+    <div class="middle">
+      <button class="bg-black text-2xl p-2 text-white rounded-full">
+        <i class="fa fa-plus"></i>
+    </button>
+    </div>
+  </div>
+  <h2>{{ product.title }}</h2>
+  <p>{{ product.price | money }}</p>
+</div>

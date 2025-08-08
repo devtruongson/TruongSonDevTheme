@@ -1,0 +1,124 @@
+<section
+  class="
+    flex justify-between my-12
+    {% case section.settings.border %}
+      {% when 0 %}
+        gap-[0px]
+        p-[0px]
+      {% when 1 %}
+        gap-[1px]
+        p-[1px]
+      {% when 2 %}
+        gap-[2px]
+        p-[2px]
+      {% when 3 %}
+        gap-[3px]
+        p-[3px]
+      {% when 4 %}
+        gap-[4px]
+        p-[4px]
+      {% when 5 %}
+        gap-[5px]
+        p-[5px]
+    {% endcase %}
+    bg-black
+  "
+>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'box' %}
+        <div class="bg-white w-full py-12">
+          <div class="flex text-{{ block.settings.text_alignment }} gap-2 items-center w-fit mx-auto">
+            {% unless block.settings.image == blank %}
+              <img class="w-16 h-16" src="{{block.settings.image | img_url : "620x620"}}" alt="">
+            {% endunless %}
+            <div>
+              <h1 class="text-2xl font-bold">{{ block.settings.title }}</h1>
+              <p>{{ block.settings.description }}</p>
+              <a href="{{block.settings.redirect_url}}">>></a>
+            </div>
+          </div>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Column section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "range",
+      "id": "border",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Border",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Box",
+      "type": "box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Use width: 250px and height: 250px Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "This is title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "This is description"
+        },
+        {
+          "type": "url",
+          "id": "redirect_url",
+          "label": "Redirect URL"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "center",
+              "label": "Middle"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Column section",
+      "blocks": [
+        {
+          "type": "box"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

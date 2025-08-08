@@ -1,0 +1,86 @@
+<div class="relative h-[620px]">
+  <button id="prevBtn" class="absolute z-[1] top-[300px] p-3 left-0 bg-black text-white">
+    <i class="fa-solid text-2xl fa-arrow-left"></i>
+  </button>
+
+  <button id="nextBtn" class="absolute z-[1] top-[300px] p-3 right-0 bg-black text-white">
+    <i class="fa-solid text-2xl fa-arrow-right"></i>
+  </button>
+
+  <div class="overflow-hidden relative h-[620px]">
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'banner' %}
+          <div class="absolute duration-1000 transition w-[100%] slide">
+            <div class="relative h-[620px]">
+              <h1 class="text-6xl text-center bottom-[35%] top-[40%] right-[30%] left-[30%] absolute">{{block.settings.banner_title}}</h1>
+      
+              <div class="text-center right-[30%] left-[30%] bottom-0 absolute">
+                <h1 class="text-5xl">{{ forloop.index }} / {{forloop.length}}</h1>
+                <h3 class="text-4xl">{{block.settings.banner_subtitle}}</h3>
+                <h4>{{block.settings.banner_description}}</h4>
+              </div>
+      
+              <img class="px-5 w-full" src="{{block.settings.hero_image | img_url : "1224x620"}}" alt="">
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+
+  </div>
+</div>
+
+<script src="{{'carusel.js'|asset_url}}"></script>
+
+{% schema %}
+{
+  "name": "Image hero",
+  "max_blocks": 3,
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "url",
+          "id": "redirect_url",
+          "label": "Redirect URL"
+        },
+        {
+          "type": "text",
+          "id": "banner_title",
+          "label": "Banner title",
+          "default": "New this week"
+        },
+        {
+          "type": "text",
+          "id": "banner_subtitle",
+          "label": "Banner subtitle",
+          "default": "Spring Girls"
+        },
+        {
+          "type": "textarea",
+          "id": "banner_description",
+          "label": "Banner description",
+          "default": "Lookbook 2015"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image hero"
+    }
+  ]
+}
+{% endschema %}

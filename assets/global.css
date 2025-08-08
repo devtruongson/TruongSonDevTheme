@@ -1,0 +1,64 @@
+:root {
+    --promobar-gradient-start-color: #f9423a;
+    --promobar-gradient-end-color: #f9423a;
+    --promobar-text-color: #ffffff;
+    --wrapper-padding-x: 28px;
+    --site-margin-top: 99px;
+    --body-background-color: #fff5ec;
+    --wrapper-padding-x: 28px;
+
+}
+
+@media screen and(min-width: 750px) {
+    :root {
+        --wrapper-padding-x: 40px;
+    }
+}
+
+@media screen and(min-width: 1400px) {
+    :root {
+        --wrapper-padding-x: 80px;
+    }
+}
+
+
+*, :after, :before, input {
+    box-sizing: border-box
+}
+
+body, html {
+    margin: 0;
+    max-width: 100%;
+    padding: 0
+}
+
+body {
+    background-color: var(--body-background-color);
+}
+
+body, button, input, label, select, textarea {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    color: #000;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.2rem
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 1760px;
+    padding: 0 var(--wrapper-padding-x);
+}
+
+.site-nav__dropdown {
+    padding: 54px 0;
+}

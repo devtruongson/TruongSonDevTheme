@@ -1,0 +1,126 @@
+{
+  "sections": {
+    "image_hero": {
+      "type": "image_hero",
+      "blocks": {
+        "00ebd720-47c3-4e73-989d-59cfc283de7a": {
+          "type": "banner",
+          "settings": {
+            "hero_image": "shopify://shop_images/professional-smiling-woman.jpg",
+            "redirect_url": "",
+            "banner_title": "New this week",
+            "banner_subtitle": "Spring Girls",
+            "banner_description": "Lookbook 2015"
+          }
+        },
+        "f2cdcd51-59c3-4baf-a543-12f43e08380b": {
+          "type": "banner",
+          "settings": {
+            "hero_image": "shopify://shop_images/rack-of-womens-clothing.jpg",
+            "redirect_url": "",
+            "banner_title": "New this week",
+            "banner_subtitle": "Spring Girls",
+            "banner_description": "Lookbook 2015"
+          }
+        },
+        "2daf0829-eea3-4931-9393-3653154f41b9": {
+          "type": "banner",
+          "settings": {
+            "hero_image": "shopify://shop_images/osama-coding.png",
+            "redirect_url": "",
+            "banner_title": "New this week",
+            "banner_subtitle": "Spring Girls",
+            "banner_description": "Lookbook 2015"
+          }
+        }
+      },
+      "block_order": [
+        "00ebd720-47c3-4e73-989d-59cfc283de7a",
+        "f2cdcd51-59c3-4baf-a543-12f43e08380b",
+        "2daf0829-eea3-4931-9393-3653154f41b9"
+      ],
+      "settings": {}
+    },
+    "column-hero": {
+      "type": "column-hero",
+      "blocks": {
+        "image_with_text_or_input": {
+          "type": "image_with_text_or_input",
+          "settings": {
+            "image": "shopify://shop_images/model-with-leather-jacket-over-shoulders.jpg",
+            "text_or_input": "text",
+            "title": "This is Image title",
+            "image_description": "This is image description",
+            "redirect_url": "",
+            "form_name": true,
+            "form_email": false,
+            "form_message": true
+          }
+        },
+        "youtube_video": {
+          "type": "youtube_video",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=eXBkFr_s3Bc",
+            "video_title": "Edit title",
+            "video_description": "Edit description"
+          }
+        }
+      },
+      "block_order": ["image_with_text_or_input", "youtube_video"],
+      "settings": {}
+    },
+    "8433263c-1b01-421c-9c77-2909e3ad28d3": {
+      "type": "column-hero",
+      "blocks": {
+        "a161c67c-20fc-4928-a65c-7ad86e9cbe17": {
+          "type": "collections",
+          "settings": {
+            "title": "Collections",
+            "description": "Collection description",
+            "limit": 2
+          }
+        },
+        "template--18953686909240__8433263c-1b01-421c-9c77-2909e3ad28d3-1683469542d7173309-0": {
+          "type": "image_with_text_or_input",
+          "settings": {
+            "image": "shopify://shop_images/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg",
+            "text_or_input": "text",
+            "title": "This is Image title",
+            "image_description": "This is image description",
+            "redirect_url": "",
+            "form_name": true,
+            "form_email": false,
+            "form_message": true
+          }
+        }
+      },
+      "block_order": [
+        "a161c67c-20fc-4928-a65c-7ad86e9cbe17",
+        "template--18953686909240__8433263c-1b01-421c-9c77-2909e3ad28d3-1683469542d7173309-0"
+      ],
+      "settings": {}
+    },
+    "column-section": {
+      "type": "column-section",
+      "settings": {
+        "border": 1
+      },
+      "blocks": {
+        "box": {
+          "type": "box",
+          "settings": {
+            "title": "This is title",
+            "description": "This is description"
+          }
+        }
+      },
+      "block_order": ["box"]
+    }
+  },
+  "order": [
+    "image_hero",
+    "column-hero",
+    "8433263c-1b01-421c-9c77-2909e3ad28d3",
+    "column-section"
+  ]
+}

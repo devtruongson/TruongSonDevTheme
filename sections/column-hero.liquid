@@ -1,0 +1,355 @@
+<section class="flex my-12 gap-3 justify-between h[90vh] items-center">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'image_with_text_or_input' %}
+        <div class="relative w-full">
+          <div class="{% if block.settings.image_text_alignment == "center" %} pb-12 {% else %} pl-24 {% endif %}">
+            <img
+              class="{% if block.settings.image_text_alignment == "center" %} w-full {% endif %}"
+              src="{{ block.settings.image | img_url: "1224x620" }}"
+              alt=""
+            >
+          </div>
+
+          {% comment %}
+            ---if alignment center add this classes---
+            text: bottom-0 text-center w-full
+            image: w-full
+          {% endcomment %}
+
+          <div class="absolute {% if block.settings.image_text_alignment == "left" %} bottom-11 {% else %} bottom-0 text-center w-full {% endif %}">
+            {% if block.settings.text_or_input == 'text' %}
+              <h1 class="text-5xl">{{ block.settings.title }}</h1>
+              <p>{{ block.settings.image_description }}</p>
+              <a href="{{ block.settings.redirect_url }}">>></a>
+            {% else %}
+              {% form 'customer' %}
+                {{ form.errors | default_errors }}
+                <div class="flex gap-5 flex-col ">
+                  {% assign css = "border-2 border-black p-2" %}
+                  {% if block.settings.form_name == true %}
+                    <input class="{{css}}" type="text" placeholder="Name">
+                  {% endif %}
+                  {% if block.settings.form_email == true %}
+                    <input class="{{css}}" type="email" placeholder="Email">
+                  {% endif %}
+                  {% if block.settings.form_message == true %}
+                    <textarea placeholder="Message" class="{{css}}" name="message" id="message" cols="30" rows="5"></textarea>
+                  {% endif %}
+
+                  {% if block.settings.form_name == false
+                    and block.settings.form_email == false
+                    and block.settings.form_message == false
+                  %}
+                    <p>Your form goes here</p>
+                  {% else %}
+                    <input class="p-2 bg-black text-white cursor-pointer w-[50%]" type="submit" value="submit">
+                  {% endif %}
+                </div>
+              {% endform %}
+            {% endif %}
+          </div>
+        </div>
+
+      {% when 'youtube_video' %}
+        <div class="w-full">
+          <iframe
+            src="{{ block.settings.video_url| replace: 'watch?v=', 'embed/' }}"
+            frameborder="0"
+            class=""
+            width="560"
+            height="315"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+
+          <h3 class="text-2xl">{{ block.settings.video_title }}</h3>
+          <p>{{ block.settings.video_description }}</p>
+        </div>
+
+      {% when 'collections' %}
+        <div class="w-full grid gap-12 text-center">
+          <div>
+            <h1 class="text-2xl">{{ block.settings.title }}</h1>
+            <p>{{ block.settings.description }}</p>
+            <p>. . .</p>
+          </div>
+
+          <div class="flex justify-center gap-3">
+            {% for product in collections.boy.products limit: block.settings.limit %}
+              {% render 'product-card' | product: product %}
+            {% endfor %}
+          </div>
+        </div>
+
+      {% when 'teams' %}
+        <div class="w-full grid gap-12 text-center">
+          <div>
+            <h1 class="text-2xl">{{ block.settings.title }}</h1>
+            <p>{{ block.settings.description }}</p>
+            <p>. . .</p>
+          </div>
+
+          <div class="flex justify-center gap-3">
+            <img src="https://picsum.photos/id/139/250/300" alt="">
+            <img src="https://picsum.photos/id/140/250/300" alt="">
+          </div>
+        </div>
+
+      {% when 'blogs' %}
+        <div class="w-full flex gap-3">
+          <div>
+            <img class="w-full" src="https://picsum.photos/560/315" alt="">
+
+            <h3 class="text-2xl">Blog title</h3>
+            <p>Blog description</p>
+          </div>
+          <div>
+            <img class="w-full" src="https://picsum.photos/560/315" alt="">
+
+            <h3 class="text-2xl">Blog title</h3>
+            <p>Blog description</p>
+          </div>
+        </div>
+
+      {% when 'testimonial' %}
+        <div class="grid gap-12 text-center">
+          <div>
+            <h1 class="text-2xl">{{ block.settings.title }}</h1>
+            <p>{{ block.settings.description }}</p>
+            <p>. . .</p>
+          </div>
+
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit voluptatem qui reiciendis? Ea et illo error
+              perspiciatis, enim maxime aut consequuntur odit repellat quaerat dolorum debitis, eius obcaecati!
+              Praesentium, eum.
+            </p>
+            <p>John Doe</p>
+          </div>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Column hero",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "name": "Image with Text or Input",
+      "type": "image_with_text_or_input",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Use width: 400px and height: 600px Image"
+        },
+        {
+          "type": "select",
+          "id": "text_or_input",
+          "label": "Text or Input?",
+          "options": [
+            {
+              "value": "text",
+              "label": "Text"
+            },
+            {
+              "value": "input",
+              "label": "Input"
+            }
+          ],
+          "default": "text"
+        },
+        {
+          "type": "select",
+          "id": "image_text_alignment",
+          "label": "Image and text alignment",
+          "info": "The alignment of text and image",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "This is Image title"
+        },
+        {
+          "type": "textarea",
+          "id": "image_description",
+          "label": "Image description",
+          "default": "This is image description"
+        },
+        {
+          "type": "url",
+          "id": "redirect_url",
+          "label": "Redirect URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "form_name",
+          "label": "Name input",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "form_email",
+          "label": "Email input",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "form_message",
+          "label": "Message input",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "Youtube video",
+      "type": "youtube_video",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "default": "https://www.youtube.com/watch?v=FxMw8SDCqwc",
+          "accept": ["vimeo", "youtube"]
+        },
+        {
+          "type": "text",
+          "id": "video_title",
+          "label": "Video title",
+          "default": "Edit title"
+        },
+        {
+          "type": "textarea",
+          "id": "video_description",
+          "label": "Video description",
+          "default": "Edit description"
+        }
+      ]
+    },
+    {
+      "name": "Collections",
+      "type": "collections",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collections"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Collection description"
+        },
+        {
+          "type": "number",
+          "id": "limit",
+          "label": "Number of collection",
+          "default": 8
+        }
+      ]
+    },
+    {
+      "name": "Blogs",
+      "type": "blogs",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "number",
+          "id": "limit",
+          "label": "Number of blogs",
+          "default": 2
+        }
+      ]
+    },
+    {
+      "name": "Team",
+      "type": "teams",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Teams"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Teams description"
+        },
+        {
+          "type": "number",
+          "id": "limit",
+          "label": "Number of teams",
+          "default": 8
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Testimonial"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "People say about us"
+        },
+        {
+          "type": "number",
+          "id": "limit",
+          "label": "Number of feedback",
+          "default": 8
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Column hero",
+      "blocks": [
+        {
+          "type": "image_with_text_or_input"
+        },
+        {
+          "type": "youtube_video"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

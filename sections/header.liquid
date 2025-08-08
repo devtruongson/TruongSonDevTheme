@@ -1,0 +1,168 @@
+<div class="fixed top-0 left-0 right-0 z-[10000]">
+  <div class="h-[32px] bg-[var(--promobar-gradient-start-color)] bg-gradient-to-r from-[var(--promobar-gradient-start-color)] to-[var(--promobar-gradient-end-color)] text-[var(--promobar-text-color)] text-xs flex items-center justify-center">
+    <p class="text-center relative promobar-links block w-full h-full">
+      <span
+        class="promobar-link font-sofia flex justify-center items-center text-[14px] h-[32px] leading-[22px] font-[600] absolute top-0 left-0 right-0 bottom-0 opacity-0 transition-opacity duration-700 ease-in-out transform"
+      >
+        <a href="#" title="Sign up for 15% OFF your order"> {{ section.settings.promo_1 }}</a>
+      </span>
+      <span
+        class="promobar-link font-sofia flex justify-center items-center text-[14px] h-[32px] leading-[22px] font-[600] absolute top-0 left-0 right-0 bottom-0 opacity-0 transition-opacity duration-700 ease-in-out transform"
+      >
+        <a href="#" title="NEW! Root Refresh Dry Shampoo"> {{ section.settings.promo_2 }}</a>
+      </span>
+      <span
+        class="promobar-link font-sofia flex justify-center items-center text-[14px] h-[32px] leading-[22px] font-[600] absolute top-0 left-0 right-0 bottom-0 opacity-0 transition-opacity duration-700 ease-in-out transform"
+      >
+        <a href="#" title="FREE Shipping on US orders +$50"> {{ section.settings.promo_3 }}</a>
+      </span>
+    </p>
+  </div>
+  <header class="site-header">
+    <div
+      class="site-header__wrapper wrapper flex items-center justify-between relative z-[10000]"
+    >
+      <nav>
+        <ul class="flex items-center space-x-4 font-sofia font-[600] text-[20px]">
+          <li class="flex items-center gap-1">
+            Shop
+            {{- 'icon-down.svg' | inline_asset_content -}}
+            <div class="site-nav__dropdown absolute ">
+              <div class="site-nav__dropdown-left">
+                <ul>
+                  <li>
+                    <a href="#" title="Hair Care">
+                      <span>
+                        <span>Hair & Scalp Oils</span>
+                        <span>Strengthen, smooth & shine.</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="Hair Care">
+                      <span>
+                        <span>Wash Care </span>
+                        <span>Cleanse, hydrate & repair strands.</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="Hair Care">
+                      <span>
+                        <span>Styling </span>
+                        <span>Volumize, protect & smooth frizz.</span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="site-nav__dropdown-center">
+                <ul>
+                  <li>
+                    <a href="#" title="Hair Care">
+                      <span>
+                        <span>Hair & Scalp Oils</span>
+                        <span>Strengthen, smooth & shine.</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="Hair Care">
+                      <span>
+                        <span>Wash Care </span>
+                        <span>Cleanse, hydrate & repair strands.</span>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" title="Hair Care">
+                      <span>
+                        <span>Styling </span>
+                        <span>Volumize, protect & smooth frizz.</span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="site-nav__dropdown-right"></div>
+            </div>
+          </li>
+          <li class="flex items-center gap-1">
+            Discover
+            {{- 'icon-down.svg' | inline_asset_content -}}
+          </li>
+          <li class="flex items-center gap-1">
+            <a href="#">BYOB</a>
+          </li>
+        </ul>
+      </nav>
+      <a title="Home" href="{{ routes.root_url }}" class="h-[39px] flex justify-center w-full">
+        <img
+          src="{{ 'logo-lg.webp' | asset_url }}"
+          alt="asd"
+          width="368"
+          class="mx-auto max-h-full logo-header absolute z-[1000] block"
+          height="38"
+          loading="lazy"
+        >
+        <img
+          src="{{ 'logo-second.avif' | asset_url }}"
+          alt="asd"
+          width="94"
+          class="mx-auto logo-header-second h-[94px] w-[99px] absolute top-[-12px] z-[1000] hidden"
+          height="88"
+          loading="lazy"
+        >
+      </a>
+      <ul class="flex items-center space-x-4">
+        <li class="flex items-center gap-1">
+          <button class="font-sofia font-[600] text-[20px] whitespace-nowrap">$ USD</button>
+          {{- 'icon-down.svg' | inline_asset_content -}}
+        </li>
+        <li class="flex items-center gap-1">
+          <button class="font-sofia font-[600] text-[20px]">
+            {{- 'icon-search.svg' | inline_asset_content -}}
+            {% comment %} {{- 'icon-close.svg' | inline_asset_content -}} {% endcomment %}
+          </button>
+        </li>
+        <li class="flex items-center gap-1 font-sofia font-[600] text-[20px]">
+          <a href="#">
+            {{- 'icon-user.svg' | inline_asset_content -}}
+          </a>
+        </li>
+        <li class="flex items-center gap-1">
+          <button class="font-sofia font-[600] text-[20px]">
+            {{- 'icon-cart.svg' | inline_asset_content -}}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <div class="header-divider"></div>
+</div>
+
+{% schema %}
+{
+  "name": "`",
+  "settings": [
+    {
+      "type": "text",
+      "id": "promo_1",
+      "label": "Promo message 1",
+      "default": "✨ Sign up for 15% OFF your order ✨"
+    },
+    {
+      "type": "text",
+      "id": "promo_2",
+      "label": "Promo message 2",
+      "default": "📣 NEW! Root Refresh Dry Shampoo 📣"
+    },
+    {
+      "type": "text",
+      "id": "promo_3",
+      "label": "Promo message 3",
+      "default": "FREE Shipping on US orders +$50"
+    }
+  ]
+}
+{% endschema %}

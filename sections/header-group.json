@@ -1,0 +1,15 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {}
+    },
+    "top-bar": {
+      "type": "top-bar",
+      "settings": {}
+    }
+  },
+  "order": ["top-bar","header"]
+}

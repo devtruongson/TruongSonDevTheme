@@ -1,0 +1,103 @@
+<section class="grid grid-cols-3 gap-3">
+  <div class="col-span-2 bg-gray-300 p-12">
+    <h1 class="text-5xl">{{ section.settings.title }}</h1>
+    <br>
+    {%- assign formId = 'Contact_' | append: section.id -%}
+    {% form 'customer', id: formId, novalidate: 'novalidate', class: 'contact-form form-single-field' %}
+      {%- if form.posted_successfully? -%}
+        <p class="" tabindex="-1" data-form-status>email send success</p>
+      {%- endif -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="w-full flex">
+        <input
+          type="email"
+          name="contact[email]"
+          value="{{ form.email }}"
+          placeholder="Email"
+          class="p-2 bg-white w-full"
+        >
+        <button type="submit" class="p-2 px-5 bg-[red]" name="commit">Submit</button>
+      </div>
+      {%- if form.errors contains 'email' -%}
+        <span>
+          <li class="">err msg 1</li>
+          <li>icon</li>
+          <li>err msg 2</li>
+        </span>
+      {%- endif -%}
+    {% endform %}
+    <p>{{ section.settings.newslatter_description }}</p>
+  </div>
+  {% if section.settings.show_image_grid == true %}
+    <div class="grid grid-cols-3 gap-2">
+      {% for block in section.blocks %}
+        {% if block.type == 'grid_images' %}
+          <a href="{{block.settings.image_url}}">
+            {{ block.settings.grid_image | img_url: '2048x' | img_tag }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Email Newslatter",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_image_grid",
+      "label": "Show Imgae grid",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Newlatter Color",
+      "options": [
+        {
+          "value": "bg-[#989898] text-[#fff]",
+          "label": "Gray"
+        },
+        {
+          "value": "bg-[brown] text-[#fff]",
+          "label": "Brown"
+        }
+      ],
+      "default": "bg-[#989898] text-[#fff]"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Newslatter"
+    },
+    {
+      "type": "textarea",
+      "id": "newslatter_description",
+      "label": "Description",
+      "default": " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum eligendi sit sed"
+    }
+  ],
+  "max_blocks": 9,
+  "blocks": [
+    {
+      "name": "Grid Image",
+      "type": "grid_images",
+      "settings": [
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image url"
+        },
+        {
+          "type": "image_picker",
+          "id": "grid_image",
+          "label": "Grid Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,41 @@
+name: Automated Workflow
+
+on:
+    push:
+        branches:
+            - development
+    pull_request:
+        branches:
+            - master
+    workflow_run:
+        workflows: ["Automated Workflow"]
+        branches:
+            - master
+
+jobs:
+    pull-request-master:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Create pull request
+              uses: peter-evans/create-pull-request@v3
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  branch: master
+                  base: master
+
+    pull-request-merchants:
+        needs: pull-request-master
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Create pull request
+              uses: peter-evans/create-pull-request@v3
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  branch: merchants
+                  base: master

@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "featured": {
+      "type": "collection-featured",
+      "settings": {
+        "subtitle_of_collection_featured": "30% off"
+      }
+    },
+    "collection": {
+      "type": "collection",
+      "settings": {
+        "heading": "Item",
+        "sub_title": "Winter collection"
+      }
+    }
+  },
+  "order": ["featured", "collection"]
+}

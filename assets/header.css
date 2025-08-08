@@ -1,0 +1,107 @@
+:root {
+    --site-header-color: #000;
+    --site-header-background-color: #fff5ec
+}
+
+.site-header {
+    background-color: var(--site-header-background-color);
+    min-height: 67px;
+    padding: 18px 0 19px;
+    position: relative;
+    z-index: 998
+}
+
+@media screen and (min-width:1025px) {
+    .site-header {
+        padding: 26px 0 24px
+    }
+}
+
+.nav-active .site-header.site-header--transparent-mobile, .site-header.site-header--transparent-mobile.site-header--scrolled {
+    --site-header-color: #000;
+    --site-header-background-color: #fff5ec
+}
+
+@media screen and (max-width:749px) {
+    .address-expanded .site-header, .template-order .site-header {
+        display: none
+    }
+}
+
+@media screen and (min-width:1025px) {
+    .site-header:before {
+        background-color: #fff5ec;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        z-index: 1
+    }
+}
+
+.site-header__wrapper {
+    --wrapper-padding-x: 27px;
+    align-items: center;
+    display: flex;
+    justify-content: center
+}
+
+@media screen and (min-width:1400px) {
+    .site-header__wrapper {
+        --wrapper-padding-x: 79px;
+        padding-right: 75px
+    }
+}
+
+@media screen and (min-width:1025px) {
+    .dropdown-active .site-header__wrapper:after, .search-active .site-header__wrapper:after {
+        background-color: #000;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 1px;
+        left: 50%;
+        max-width: 1680px;
+        pointer-events: none;
+        position: absolute;
+        transform: translateX(-50%);
+        width: calc(100% - 80px);
+        z-index: 2
+    }
+}
+
+@media screen and (min-width:1400px) {
+    .dropdown-active .site-header__wrapper:after, .search-active .site-header__wrapper:after {
+        max-width: 1602px;
+        width: calc(100% - 158px)
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .site-header {
+        padding: 26px 0 24px
+    }
+}
+
+.header-divider {
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: #000;
+    bottom: 0;
+    opacity: 1;
+    z-index: 2;
+    left: 50%;
+    transform: translate(-50%, 100%);
+}
+
+@media screen and (min-width: 1400px) {
+    .header-divider {
+        max-width: 1602px;
+        width: calc(100% - 158px);
+    }
+}

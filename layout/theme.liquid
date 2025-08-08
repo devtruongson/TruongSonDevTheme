@@ -1,0 +1,19 @@
+<html>
+  <head>
+    {{ content_for_header }}
+    <!-- Tailwind CSS code -->
+    {{ 'application.css' | asset_url | stylesheet_tag }}
+    {{ 'global.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'header.js' | asset_url }}" defer="defer"></script>
+    {{ 'fonts.css' | asset_url | stylesheet_tag }}
+    {{ 'header.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body>
+    {% sections 'header-group' %}
+    <main role="main" class="container mx-auto" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+  </body>
+</html>

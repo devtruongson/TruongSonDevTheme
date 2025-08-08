@@ -1,0 +1,74 @@
+<footer class="flex justify-between items-end">
+  <div class="flex gap-3">
+    <h4>{{ shop.name }}</h4>
+    {% for block in section.blocks %}
+      {% if block.type == 'left_link' %}
+        {% if block.settings.left_url != null %}
+          <a href="{{ block.settings.left_url }}">{{ block.settings.left_url_label }}</a>
+        {% else %}
+          <span>Link</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="flex gap-3">
+    {% for block in section.blocks %}
+      {% if block.type == 'right_link' %}
+        {% if block.settings.right_url != null %}
+          <a href="{{ block.settings.right_url }}">{{ block.settings.right_url_label }}</a>
+        {% else %}
+          <span>Link</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_link",
+      "name": "Left link",
+      "settings": [
+        {
+          "type": "url",
+          "id": "left_url",
+          "label": "Left URL"
+        },
+        {
+          "type": "text",
+          "id": "left_url_label",
+          "label": "Link label"
+        }
+      ]
+    },
+    {
+      "type": "right_link",
+      "name": "Right link",
+      "settings": [
+        {
+          "type": "url",
+          "id": "right_url",
+          "label": "Right URL"
+        },
+        {
+          "type": "text",
+          "id": "right_url_label",
+          "label": "Link label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

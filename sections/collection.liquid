@@ -1,0 +1,54 @@
+{% assign products_per_page = 8 %}
+
+<div class="grid gap-12 my-24">
+  {% paginate collection.products by products_per_page %}
+    <div class="text-center">
+      <h3 class="text-2xl font-bold">{{ section.settings.heading }}</h3>
+      <p>{{ section.settings.sub_title }}</p>
+
+      <select name="sort-by" id="sort-by">
+        <option value="" disabled selected>Sorting by</option>
+        {% for sort_option in collection.sort_options %}
+          <option value="{{sort_option.value}}">{{ sort_option.name }}</option>
+        {% endfor %}
+      </select>
+      <select name="sort" id="sort">
+        <option value="" disabled selected>View as</option>
+      </select>
+    </div>
+
+    <div class="grid grid-cols-4 gap-x-3 gap-y-12">
+      {% for product in collection.products %}
+        {% render 'product-card' | product: product %}
+      {% endfor %}
+    </div>
+
+    {% if collection.all_products_count > 8 %}
+      {% render 'pagination-custom', paginate: paginate %}
+    {% endif %}
+
+  {% endpaginate %}
+</div>
+
+{{ 'product-sort.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Collection",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "collection_title",
+      "default": "Item"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_title",
+      "label": "Sub title",
+      "default": "Winter colection"
+    }
+  ]
+}
+{% endschema %}

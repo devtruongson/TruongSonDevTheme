@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "hero": {
+      "type": "column-hero",
+      "blocks": {
+        "c575bd32-7e29-40d5-babb-7441a3523372": {
+          "type": "image_with_text_or_input",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/putting-on-your-shoes_925x_9d4e1640-742a-4eae-9b7b-440bf7e6c80c.jpg",
+            "text_or_input": "text",
+            "image_text_alignment": "center",
+            "title": "{{ page.title }}",
+            "image_description": "This is image description",
+            "redirect_url": "",
+            "form_name": true,
+            "form_email": false,
+            "form_message": true
+          }
+        }
+      },
+      "block_order": [
+        "c575bd32-7e29-40d5-babb-7441a3523372"
+      ],
+      "settings": {
+      }
+    },
+    "form": {
+      "type": "column-hero",
+      "blocks": {
+        "9fe530ca-d784-4321-ad1a-2b5056741f81": {
+          "type": "image_with_text_or_input",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/model-with-leather-jacket-over-shoulders.jpg",
+            "text_or_input": "input",
+            "image_text_alignment": "left",
+            "title": "This is Image title",
+            "image_description": "This is image description",
+            "redirect_url": "",
+            "form_name": false,
+            "form_email": true,
+            "form_message": true
+          }
+        },
+        "2f7389e1-565a-4873-8b67-b8542e210352": {
+          "type": "collections",
+          "settings": {
+            "title": "Collections",
+            "description": "Collection description",
+            "limit": 2
+          }
+        }
+      },
+      "block_order": [
+        "9fe530ca-d784-4321-ad1a-2b5056741f81",
+        "2f7389e1-565a-4873-8b67-b8542e210352"
+      ],
+      "settings": {
+      }
+    },
+    "text-grid": {
+      "type": "column-section",
+      "blocks": {
+        "11f3202e-00bc-4d5a-88fe-526e03563566": {
+          "type": "box",
+          "settings": {
+            "title": "This is title",
+            "description": "This is description",
+            "redirect_url": "",
+            "text_alignment": "center"
+          }
+        },
+        "83da5950-17d3-4a0d-86e3-15c9ed00e88a": {
+          "type": "box",
+          "settings": {
+            "title": "This is title",
+            "description": "This is description",
+            "redirect_url": "",
+            "text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "11f3202e-00bc-4d5a-88fe-526e03563566",
+        "83da5950-17d3-4a0d-86e3-15c9ed00e88a"
+      ],
+      "settings": {
+        "border": 0
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "form",
+    "text-grid"
+  ]
+}
