@@ -6,7 +6,7 @@
     --site-margin-top              : 99px;
     --body-background-color        : #fff5ec;
     --wrapper-padding-x            : 28px;
-
+    --button-padding-x             : 56px
 }
 
 html {
@@ -14,18 +14,23 @@ html {
     font-size : 62.5%;
 }
 
-@media screen and(min-width: 750px) {
+@media screen and (min-width:750px) {
     :root {
-        --wrapper-padding-x: 40px;
+        --wrapper-padding-x: 40px
     }
 }
 
-@media screen and(min-width: 1400px) {
+@media screen and (min-width:1025px) {
     :root {
-        --wrapper-padding-x: 80px;
+        --site-margin-top: 121px
     }
 }
 
+@media screen and (min-width:1400px) {
+    :root {
+        --wrapper-padding-x: 80px
+    }
+}
 
 *,
 :after,
@@ -83,4 +88,37 @@ ul {
 
 .border-black-right {
     border-right: 1px solid #000
+}
+
+
+.btn {
+    align-items        : center;
+    -webkit-appearance : none;
+    -moz-appearance    : none;
+    appearance         : none;
+    background-color   : #f9423a;
+    border             : 0;
+    border-radius      : 24px;
+    color              : #000;
+    cursor             : pointer;
+    display            : inline-flex;
+    font-family        : SofiaPro, helvetica, arial, sans-serif;
+    font-size          : 1.6rem;
+    height             : 50px;
+    justify-content    : center;
+    line-height        : 2.4rem;
+    margin             : 0;
+    font-weight        : 700;
+    padding            : 0 var(--button-padding-x);
+    text-align         : center;
+    text-decoration    : none;
+    text-transform     : uppercase;
+    transition         : background-color .2s cubic-bezier(.46, .01, .32, 1);
+    -webkit-user-select: none;
+    -moz-user-select   : none;
+    user-select        : none;
+    vertical-align     : middle;
+    white-space        : nowrap;
+    width              : auto;
+    border             : 1px solid #000;
 }
