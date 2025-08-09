@@ -9,11 +9,18 @@
     {{ 'header.css' | asset_url | stylesheet_tag }}
     {{ 'product-template.css' | asset_url | stylesheet_tag }}
     {{ 'product.css' | asset_url | stylesheet_tag }}
+    {{ 'product-swiper.css' | asset_url | stylesheet_tag }}
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ 'product-swiper.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body>
     {% sections 'header-group' %}
-    <main role="main" class="container mx-auto" tabindex="-1">
+    <main role="main" class="container mx-auto pt-[140px]" tabindex="-1">
       {{ content_for_layout }}
     </main>
     {% sections 'footer-group' %}

@@ -1,4 +1,4 @@
-<variant-picker data-url="{{ product.url }}" data-section="{{ section.id }}">
+<div class="product-form__variants" data-url="{{ product.url }}" data-section="{{ section.id }}">
   {% for option in product.options_with_values %}
     <div class="product-form__input">
       <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
@@ -23,4 +23,4 @@
       </select>
     </div>
   {% endfor %}
-</variant-picker>
+</div>
