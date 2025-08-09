@@ -1,0 +1,149 @@
+<div class="section-{{ section.id }}-padding">
+  <div class="page-width container">
+    <div class="product grid grid--1-col grid--2-col-tablet">
+      {%- assign first_available_variant = product.selected_or_first_available_variant -%}
+
+      <div class="grid__item product__media-wrapper">
+        <div class="product-media-gallery">
+          {% for media in product.media %}
+            <div class="product__media" data-media-id="{{ media.id }}">
+              <img src="{{ media | img_url: 'large' }}" alt="{{ media.alt }}">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="grid__item product__info-wrapper">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'title' %}
+              <h1 class="product__title">{{ product.title }}</h1>
+
+            {% when 'price' %}
+              <div class="product__price">
+                {{ first_available_variant.price | money }}
+              </div>
+
+            {% when 'variant_picker' %}
+              {% unless product.has_only_default_variant %}
+                <form id="product-form">
+                  {% for option in product.options_with_values %}
+                    <label>{{ option.name }}</label>
+                    <select name="options[{{ option.name }}]">
+                      {% for value in option.values %}
+                        <option value="{{ value }}">{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                  {% endfor %}
+                </form>
+              {% endunless %}
+
+            {% when 'quantity' %}
+              <div class="product__quantity">
+                <label for="Quantity">Số lượng</label>
+                <input type="number" name="quantity" id="Quantity" value="1" min="1">
+              </div>
+
+            {% when 'buy_buttons' %}
+              <div class="product__buy-buttons">
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ first_available_variant.id }}">
+                  <button
+                    type="submit"
+                    class="button button--primary"
+                    {% if first_available_variant.available == false %}
+                      disabled
+                    {% endif %}
+                  >
+                    {% if first_available_variant.available %}
+                      Thêm vào giỏ hàng
+                    {% else %}
+                      Hết hàng
+                    {% endif %}
+                  </button>
+                </form>
+              </div>
+
+            {% when 'description' %}
+              <div class="product__description rte">
+                {{ product.description }}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Template",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant picker",
+      "limit": 1
+    },
+    {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit": 1
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "product_image_size",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity_selector",
+      "label": "Show quantity selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_zoom",
+      "label": "Enable image zoom",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

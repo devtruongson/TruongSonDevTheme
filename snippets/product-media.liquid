@@ -1,0 +1,26 @@
+<div class="product-media w-full h-full" style="--aspect-ratio: {{ media.aspect_ratio }};">
+  {% case media.media_type %}
+    {% when 'image' %}
+      <img
+        srcset="
+          {%- if media.width >= 165 -%}{{ media | image_url: width: 165 }} 165w,{%- endif -%}
+          {%- if media.width >= 360 -%}{{ media | image_url: width: 360 }} 360w,{%- endif -%}
+          {%- if media.width >= 535 -%}{{ media | image_url: width: 535 }} 535w,{%- endif -%}
+          {%- if media.width >= 750 -%}{{ media | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if media.width >= 1070 -%}{{ media | image_url: width: 1070 }} 1070w,{%- endif -%}
+          {%- if media.width >= 1500 -%}{{ media | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {{ media | image_url }} {{ media.width }}w
+        "
+        src="{{ media | image_url: width: 535 }}"
+        sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+        alt="{{ media.alt | escape }}"
+        loading="lazy"
+        width="{{ media.width }}"
+        height="{{ media.height }}"
+      >
+    {% when 'video' %}
+      {{ media | video_tag: controls: true }}
+    {% when 'external_video' %}
+      {{ media | external_video_tag }}
+  {% endcase %}
+</div>
