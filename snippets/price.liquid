@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> cb040534e82507c79fcdff895557f568269000a1
 <div class="price {% if variant.compare_at_price > variant.price %}price--on-sale{% endif %}">
   <div class="price__regular">
     <span class="price-item price-item--regular">
@@ -19,25 +15,3 @@
     </div>
   {% endif %}
 </div>
-<<<<<<< HEAD
-=======
-=======
-<div class="price {% if variant.compare_at_price > variant.price %}price--on-sale{% endif %}">
-  <div class="price__regular">
-    <span class="price-item price-item--regular">
-      {{ variant.price | money }}
-    </span>
-  </div>
-  {% if variant.compare_at_price > variant.price %}
-    <div class="price__sale">
-      <span class="price-item price-item--sale">
-        {{ variant.price | money }}
-      </span>
-      <s class="price-item price-item--regular">
-        {{ variant.compare_at_price | money }}
-      </s>
-    </div>
-  {% endif %}
-</div>
->>>>>>> 349dc22f96a8b4e2ef6d606f6a7442c32b05f22d
->>>>>>> cb040534e82507c79fcdff895557f568269000a1
