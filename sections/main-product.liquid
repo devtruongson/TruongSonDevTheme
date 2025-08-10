@@ -1,9 +1,9 @@
 <div class="section-{{ section.id }}-padding">
   <div class="page-width container">
-    <div class="product grid grid--1-col grid--2-col-tablet">
+    <div class="product__wrapper width-base">
       {%- assign first_available_variant = product.selected_or_first_available_variant -%}
 
-      <div class="grid__item product__media-wrapper">
+      <div class="product__media">
         <div class="product-media-gallery">
           <div class="media-gallery-container">
             <!-- Thumbnail Swiper - Left Side -->
@@ -14,8 +14,8 @@
                     {% for media in product.media %}
                       <div class="swiper-slide">
                         {% if media.media_type == 'image' %}
-                          <img 
-                            src="{{ media | image_url: width: 100 }}" 
+                          <img
+                            src="{{ media | image_url: width: 100 }}"
                             alt="{{ media.alt | escape }}"
                             loading="lazy"
                           >
@@ -26,7 +26,7 @@
                 </div>
               </div>
             {% endif %}
-            
+
             <!-- Main Product Image Swiper - Right Side -->
             <div class="main-image-column">
               <div class="swiper main-product-swiper">
@@ -37,7 +37,7 @@
                     </div>
                   {% endfor %}
                 </div>
-                
+
                 <!-- Navigation -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -47,16 +47,12 @@
         </div>
       </div>
 
-      <div class="grid__item product__info-wrapper">
-        <div class="product-info-container">
+      <div class="product__details">
+        <div>
           {% for block in section.blocks %}
             {% case block.type %}
               {% when 'title' %}
                 <h1 class="product__title h1">{{ product.title }}</h1>
-
-              {% when 'vendor' %}
-                <div class="product__vendor">{{ product.vendor }}</div>
-
               {% when 'price' %}
                 <div class="product__rating-price">
                   <!-- Rating Stars -->
@@ -70,18 +66,32 @@
                     </div>
                     <span class="rating-count">(1,873)</span>
                   </div>
-                  
-                  <!-- Product Tags -->
-                  <div class="product__tags">
-                    <span class="tag">Strengthens</span>
-                    <span class="tag">Moisturizes</span>
-                    <span class="tag">Hydrates</span>
+                  <div class="product__meta">
+                    <div class="product__tags">
+                      {% if product.tags.size > 0 %}
+                        {% for tag in product.tags limit: 5 %}
+                          <span class="tag product__benefit-label">{{ tag }}</span>
+                        {% endfor %}
+                      {% elsif product.metafields.custom.benefits %}
+                        {% assign benefits = product.metafields.custom.benefits | split: ',' %}
+                        {% for benefit in benefits limit: 5 %}
+                          <span class="tag">{{ benefit | strip }}</span>
+                        {% endfor %}
+                      {% else %}
+                        <span class="tag"></span>
+                      {% endif %}
+                    </div>
+
+                    <p class="product__short-description">
+                      {% if product.metafields.custom.short_description %}
+                        {{ product.metafields.custom.short_description }}
+                      {% elsif product.description %}
+                        {{ product.description | strip_html | truncate: 120 }}
+                      {% else %}
+                        Discover the benefits of this premium product designed for your needs.
+                      {% endif %}
+                    </p>
                   </div>
-                  
-                  <!-- Product Description -->
-                  <p class="product__short-description">
-                    The award-winning root treatment oil for stronger, healthier hair.
-                  </p>
                 </div>
 
               {% when 'variant_picker' %}
@@ -90,10 +100,14 @@
                     <div class="variant-options">
                       {% for option in product.options_with_values %}
                         <div class="variant-option">
-                          <h4 class="variant-title">{{ option.name }}</h4>
+                          {% comment %} <h4 class="variant-title">{{ option.name }}</h4> {% endcomment %}
                           <div class="variant-buttons">
                             {% for value in option.values %}
-                              <button type="button" class="variant-btn {% if forloop.first %}active{% endif %}" data-value="{{ value }}">
+                              <button
+                                type="button"
+                                class="variant-btn {% if forloop.first %}active{% endif %}"
+                                data-value="{{ value }}"
+                              >
                                 {{ value }}
                               </button>
                             {% endfor %}
@@ -112,15 +126,15 @@
                       <input type="radio" id="one-time" name="purchase-type" value="one-time">
                       <label for="one-time" class="purchase-label">
                         <span class="option-text">One-time Purchase</span>
-                        <span class="option-price">$38.00</span>
+                        <span class="option-price">{{ product.price | money }}</span>
                       </label>
                     </div>
-                    
+
                     <div class="purchase-option active">
                       <input type="radio" id="subscribe" name="purchase-type" value="subscribe" checked>
                       <label for="subscribe" class="purchase-label">
                         <span class="option-text">Subscribe & Save</span>
-                        <span class="option-price">$32.40</span>
+                        <span class="option-price">{{ product.price | times: 0.85 | money }}</span>
                         <span class="save-badge">SAVE 15%</span>
                       </label>
                       <div class="subscription-benefits">
@@ -129,7 +143,7 @@
                       </div>
                     </div>
                   </div>
-                  
+
                   <!-- Delivery Schedule -->
                   <div class="delivery-schedule">
                     <div class="schedule-options">
@@ -138,17 +152,10 @@
                       <button type="button" class="schedule-btn">90 Days</button>
                     </div>
                   </div>
-                  
+
                   <!-- Quantity & Add to Cart -->
                   <div class="quantity-cart-section">
-                    <div class="quantity-selector">
-                      <button type="button" class="qty-btn minus">−</button>
-                      <input type="number" class="qty-input" value="1" min="1">
-                      <button type="button" class="qty-btn plus">+</button>
-                    </div>
-                    
-                    {% form 'product', product %}
-                      <input type="hidden" name="id" value="{{ first_available_variant.id }}">
+                    {% form 'product', product, class: 'product-form flex-1' %}
                       <button
                         type="submit"
                         class="add-to-cart-btn"
@@ -160,29 +167,7 @@
                       </button>
                     {% endform %}
                   </div>
-                  
-                  <!-- Afterpay -->
-                  <div class="afterpay-info">
-                    <p>or 4 interest-free payments of <strong>$9.50</strong> with <span class="afterpay-logo">Afterpay</span></p>
-                  </div>
-                  
-                  <!-- Benefits -->
-                  <div class="product-benefits">
-                    <div class="benefit-item">
-                      <span class="benefit-icon">🚚</span>
-                      <span class="benefit-text">FREE US Shipping +$50</span>
-                    </div>
-                    <div class="benefit-item">
-                      <span class="benefit-icon">📊</span>
-                      <span class="benefit-text">FREE Samples</span>
-                    </div>
-                    <div class="benefit-item">
-                      <span class="benefit-icon">🏆</span>
-                      <span class="benefit-text">Earn Rewards on TYB</span>
-                    </div>
-                  </div>
                 </div>
-
               {% when 'description' %}
                 <div class="product__description rte">
                   {{ product.description }}
@@ -191,7 +176,18 @@
           {% endfor %}
         </div>
       </div>
-      <!-- Start of Judge.me code --><div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-auto-install='false'>{{ product.metafields.judgeme.widget }}</div><!-- End of Judge.me code -->
+      <!-- Start of Judge.me code -->
+      <div style="clear:both"></div>
+      <div
+        id="judgeme_product_reviews"
+        class="jdgm-widget jdgm-review-widget"
+        data-product-title="{{ product.title | escape }}"
+        data-id="{{ product.id }}"
+        data-auto-install="false"
+      >
+        {{ product.metafields.judgeme.widget }}
+      </div>
+      <!-- End of Judge.me code -->
     </div>
   </div>
 </div>
