@@ -1,3 +1,35 @@
+<<<<<<< HEAD
+<html>
+  <head>
+    {{ content_for_header }}
+    <!-- Tailwind CSS code -->
+    {{ 'application.css' | asset_url | stylesheet_tag }}
+    {{ 'global.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'header.js' | asset_url }}" defer="defer"></script>
+    {{ 'fonts.css' | asset_url | stylesheet_tag }}
+    {{ 'header.css' | asset_url | stylesheet_tag }}
+    {{ 'product-template.css' | asset_url | stylesheet_tag }}
+    {{ 'product.css' | asset_url | stylesheet_tag }}
+    {{ 'product-swiper.css' | asset_url | stylesheet_tag }}
+    {{ 'product-info.css' | asset_url | stylesheet_tag }}
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ 'product-swiper.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
+  </head>
+
+  <body>
+    {% sections 'header-group' %}
+    <main role="main" class="container mx-auto main-theme" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+    {% sections 'footer-group' %}
+  </body>
+</html>
+=======
 <html>
   <head>
     {{ content_for_header }}
@@ -26,3 +58,4 @@
     {% sections 'footer-group' %}
   </body>
 </html>
+>>>>>>> 349dc22f96a8b4e2ef6d606f6a7442c32b05f22d

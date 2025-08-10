@@ -1,3 +1,131 @@
+<<<<<<< HEAD
+.product {
+    display: grid;
+    gap    : 2rem;
+}
+
+.product__media-wrapper {
+    position: relative;
+}
+
+.product__media img {
+    width  : 100%;
+    height : auto;
+    display: block;
+}
+
+.product__info-wrapper {
+    position: sticky;
+    top     : 3rem;
+}
+
+.product__title {
+    margin-bottom: 1rem;
+}
+
+.product__price {
+    margin-bottom: 1rem;
+}
+
+.product-form__input {
+    margin-bottom: 1rem;
+}
+
+.button--primary {
+    width     : 100%;
+    padding   : 1rem;
+    background: #000;
+    color     : #fff;
+    border    : none;
+    cursor    : pointer;
+}
+
+.button--primary:disabled {
+    background: #ccc;
+}
+
+
+@media screen and (min-width: 750px) {
+    .product__wrapper {
+      grid-column-gap: 24px;
+      -moz-column-gap: 24px;
+      column-gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);   
+    }
+}
+
+
+.product__media {
+  --product-thumbnails-width: 59px;
+  margin-bottom: 24px;
+  padding: 0;
+  width: 100%
+}
+
+@media screen and (max-width: 749px) {
+  .product__media {
+    margin-left: calc(var(--wrapper-padding-x)*-1);
+    margin-right: calc(var(--wrapper-padding-x)*-1);
+    width: calc(100% + var(--wrapper-padding-x)*2)
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .product__media {
+    grid-column: span 6;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 0;
+    position: sticky;
+    top: 131px
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .product__media {
+    --product-thumbnails-width: 86px;
+    align-items: flex-start;
+    display: flex;
+    grid-column: span 7;
+    padding-right: 44px;
+    top: 188px
+  }
+}
+
+
+.product__details {
+    width: 100%
+  }
+  
+  @media screen and (min-width: 750px) {
+    .product__details {
+      grid-column: span 6
+    }
+  }
+  
+  @media screen and (min-width: 1025px) {
+    .product__details {
+      grid-column: span 5
+    }
+  }
+  
+  .product__details h1 {
+    margin-bottom: 8px
+  }
+  
+  @media screen and (max-width: 749px) {
+    .product__details h1 {
+      letter-spacing: 0
+    }
+  }
+  
+  @media screen and (min-width: 750px) {
+    .product__details h1 {
+      margin-bottom: 16px
+    }
+  }
+=======
 .product {
     display: grid;
     gap    : 2rem;
@@ -48,3 +176,4 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+>>>>>>> 349dc22f96a8b4e2ef6d606f6a7442c32b05f22d
