@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cb040534e82507c79fcdff895557f568269000a1
 .product-template {
     padding: 40px 0;
 }
@@ -38,4 +42,49 @@
     height       : 30px;
     border       : 1px solid #ddd;
     border-radius: 50%;
+<<<<<<< HEAD
+=======
+=======
+.product-template {
+    padding: 40px 0;
+}
+
+.thumbnail-nav {
+    z-index: 10;
+}
+
+.thumbnail-nav .thumb-item {
+    border    : 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.thumbnail-nav .thumb-item:hover,
+.thumbnail-nav .thumb-item.active {
+    border-color: #000;
+}
+
+.option-value {
+    transition: all 0.3s ease;
+}
+
+.option-value:hover,
+.option-value.selected {
+    background: #000;
+    color     : #fff;
+}
+
+.qty-input {
+    width     : 60px;
+    text-align: center;
+    border    : 1px solid #ddd;
+    padding   : 5px;
+}
+
+.qty-btn {
+    width        : 30px;
+    height       : 30px;
+    border       : 1px solid #ddd;
+    border-radius: 50%;
+>>>>>>> 349dc22f96a8b4e2ef6d606f6a7442c32b05f22d
+>>>>>>> cb040534e82507c79fcdff895557f568269000a1
 }

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> cb040534e82507c79fcdff895557f568269000a1
 <div class="product-form__variants" data-url="{{ product.url }}" data-section="{{ section.id }}">
   {% for option in product.options_with_values %}
     <div class="product-form__input">
@@ -24,3 +28,34 @@
     </div>
   {% endfor %}
 </div>
+<<<<<<< HEAD
+=======
+=======
+<div class="product-form__variants" data-url="{{ product.url }}" data-section="{{ section.id }}">
+  {% for option in product.options_with_values %}
+    <div class="product-form__input">
+      <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+        {{ option.name }}
+      </label>
+
+      <select
+        id="Option-{{ section.id }}-{{ forloop.index0 }}"
+        class="select__select"
+        name="options[{{ option.name | escape }}]"
+      >
+        {% for value in option.values %}
+          <option
+            value="{{ value | escape }}"
+            {% if option.selected_value == value %}
+              selected="selected"
+            {% endif %}
+          >
+            {{ value }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  {% endfor %}
+</div>
+>>>>>>> 349dc22f96a8b4e2ef6d606f6a7442c32b05f22d
+>>>>>>> cb040534e82507c79fcdff895557f568269000a1
