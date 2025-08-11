@@ -5,37 +5,41 @@
     <div class="site-header__wrapper wrapper flex items-center justify-between z-[10000]">
       <nav class="w-[calc(100%/3)]">
         <ul class="flex items-center">
-          <li class="flex header-search items-center z-[99999999] sm:flex xl:hidden pr-[12px]">
+          <li class="flex header-search-mobile items-center mb-[1px] z-[99999999] sm:flex xl:hidden pr-[12px]">
             <span class="w-[20px] h-[20px]">
               {{- 'icon-bar.svg' | inline_asset_content -}}
             </span>
-            <div>
+            <div class="menu-mb hidden">
               <ul
                 class="flex items-center font-sofia font-[600] text-[20px] [&>li]:mr-[27px] [&>li]:leading-[28px] pt-[1px] sm:hidden xl:flex nav-mobile"
               >
                 <li
                   class="pb-[8px] mt-[5px] pr-[5px]"
                 >
-                  <span class="flex [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[3px]">
+                  <span class="flex [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[3px] mobile-dropdown-toggle cursor-pointer">
                     <span class="relative z-[99999999] font-quincy font-[800] md:text-[3.2rem] md:leading-[2.8rem]">
                       {{- 'icon-menu.svg' | inline_asset_content -}}
                       Shop
                     </span>
                     {{- 'icon-down.svg' | inline_asset_content -}}
                   </span>
-                  {% render 'dropdown-shop' %}
+                  <div class="mobile-dropdown-content">
+                    {% render 'dropdown-shop' %}
+                  </div>
                 </li>
                 <li
                   class="pb-[8px] mt-[5px] pr-[5px]"
                 >
-                  <span class="flex [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[3px]">
+                  <span class="flex [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[3px] mobile-dropdown-toggle cursor-pointer">
                     <span class="relative z-[99999999] font-quincy font-[800] md:text-[3.2rem] md:leading-[2.8rem]">
                       {{- 'icon-menu.svg' | inline_asset_content -}}
                       Discover
                     </span>
                     {{- 'icon-down.svg' | inline_asset_content -}}
                   </span>
-                  {% render 'dropdown-discover' %}
+                  <div class="mobile-dropdown-content">
+                    {% render 'dropdown-discover' %}
+                  </div>
                 </li>
                 <li class="flex pb-[8px] mt-[5px] pr-[5px] relative z-[99999999] font-quincy font-[800] md:text-[3.2rem] md:leading-[2.8rem]">
                   <a href="#">BYOB</a>
@@ -43,7 +47,7 @@
               </ul>
             </div>
           </li>
-          <li class="flex header-search items-center z-[99999999] sm:flex xl:hidden pr-[12px]">
+          <li class="flex header-search-mobile items-center z-[99999999] sm:flex xl:hidden pr-[12px]">
             <button class="text-[20px] button-search toggle-mobile w-[20px] h-[20px]">
               <span class="search-icon-close">
                 {{- 'icon-search.svg' | inline_asset_content -}}
@@ -55,7 +59,7 @@
           </li>
         </ul>
         <ul
-          class="flex items-center font-sofia font-[600] text-[20px] [&>li]:mr-[27px] [&>li]:leading-[28px] pt-[1px] sm:hidden xl:flex"
+          class="flex items-center font-sofia font-[600] text-[20px] [&>li]:mr-[27px] [&>li]:leading-[28px] pt-[1px] sm:hidden mb-hidden xl:flex"
         >
           <li
             class="nav-item flex pb-[8px] mt-[5px] pr-[5px] [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[5px] [&>svg]:top-[3px]"
@@ -79,7 +83,7 @@
           </li>
         </ul>
       </nav>
-      <a class="w-[calc(100%/3)] h-[39px] flex justify-center" title="Home" href="{{ routes.root_url }}">
+      <a class="w-[calc(100%/3)] mb-center h-[39px] flex justify-center" title="Home" href="{{ routes.root_url }}">
         <img
           src="{{ 'logo-lg.webp' | asset_url }}"
           alt="asd"
@@ -99,13 +103,13 @@
       </a>
       <ul class="flex items-center w-[calc(100%/3)] [&>li]:leading-[28px] justify-end">
         <li
-          class="sm:hidden xl:flex nav-item relative h-[36px] flex items-center gap-1 mr-[30px] [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[3px] [&>svg]:top-[-4px]"
+          class="xs:hidden mb-hidden xl:flex nav-item relative h-[36px] flex items-center gap-1 mr-[30px] [&>svg]:relative [&>svg]:z-[99999999] [&>svg]:ms-[3px] [&>svg]:top-[-4px]"
         >
           <button class="text-[20px] whitespace-nowrap leading-[28px] relative z-[99999999]">$ USD</button>
           {{- 'icon-down.svg' | inline_asset_content -}}
           {% render 'dropdown-currency' %}
         </li>
-        <li class="flex header-search items-center gap-1 mr-[32px] z-[99999999] sm:hidden xl:block">
+        <li class="mb-hidden flex header-search items-center gap-1 mr-[32px] z-[99999999] sm:hidden xl:block">
           <button class="text-[20px] button-search">
             <span class="search-icon-close">
               {{- 'icon-search.svg' | inline_asset_content -}}
@@ -115,13 +119,13 @@
             </span>
           </button>
         </li>
-        <li class="flex items-center gap-1 text-[20px] mr-[32px] pb-[2px] relative z-[99999999]">
-          <button class="text-[20px]">
+        <li class="flex items-center gap-1 text-[20px] mr-[32px] pb-[2px] relative z-[99999999] xs:mr-[12px]">
+          <button class="text-[20px] button-icon">
             {{- 'icon-user.svg' | inline_asset_content -}}
           </button>
         </li>
         <li class="flex items-center gap-1 pb-[2px] relative z-[99999999]">
-          <button class="text-[20px]">
+          <button class="text-[20px] button-icon">
             {{- 'icon-cart.svg' | inline_asset_content -}}
           </button>
         </li>

@@ -116,6 +116,18 @@
     height: 39px;
 }
 
+@media screen and (max-width: 576px) {
+    .button-icon {
+        width : 24px;
+        height: 24px;
+    }
+    
+    .button-icon svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
 
 .site-header__search-bar {
     background-color: #fff5ec;
@@ -222,4 +234,35 @@
         display : block;
         overflow: visible
     }
+}
+
+/* Mobile dropdown styles */
+.mobile-dropdown-toggle {
+    cursor                     : pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select                : none;
+    transition                 : opacity 0.2s ease;
+}
+
+.mobile-dropdown-toggle:active {
+    opacity: 0.7;
+}
+
+.mobile-dropdown-content {
+    overflow  : hidden;
+    transition: max-height 0.3s ease;
+}
+
+
+.open {
+    display: block !important;
+}
+
+@media screen and (max-width: 576px) {
+
+    .logo-header {
+        width: 150px;
+    }
+
+    
 }

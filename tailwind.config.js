@@ -10,6 +10,9 @@ module.exports = {
                 suisse: ['SuisseIntl', 'sans-serif'],
                 icons: ['OkeWidgetIcons'],
             },
+            screens: {
+                'xs': '500px',
+            }
         },
     },
     plugins: [],

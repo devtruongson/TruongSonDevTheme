@@ -643,7 +643,7 @@
 
 @media (max-width: 480px) {
     .product__title.h1 {
-        font-size: 1.8rem;
+        font-size: 3.6rem;
     }
 
     .rating-stars .star {

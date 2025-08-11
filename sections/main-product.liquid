@@ -1,6 +1,6 @@
 <div class="section-{{ section.id }}-padding">
-  <div class="page-width container">
-    <div class="product__wrapper width-base">
+  <div>
+    <div class="product__wrapper width-base mx-auto">
       {%- assign first_available_variant = product.selected_or_first_available_variant -%}
 
       <div class="product__media">
@@ -18,6 +18,7 @@
                             src="{{ media | image_url: width: 100 }}"
                             alt="{{ media.alt | escape }}"
                             loading="lazy"
+                            class="imageWrapper-33722356564162-"
                           >
                         {% endif %}
                       </div>
@@ -168,9 +169,39 @@
                     {% endform %}
                   </div>
                 </div>
-              {% when 'description' %}
-                <div class="product__description rte">
-                  {{ product.description }}
+                <div class="product__usps">
+                  <ul class="font-sofia font-[600]">
+                    <li>
+                      <img
+                        width="32"
+                        height="32"
+                        src="https://cdn.shopify.com/s/files/1/0650/6964/5942/files/subs-usp-shipping-truck_64x_5e04f94a-f2c8-4452-817b-56b57b983651.svg?v=1754929071"
+                        alt="Freeship"
+                      >
+                      <span>FREE US Shipping +$50</span>
+                    </li>
+                    <li>
+                      <img
+                        width="32"
+                        height="32"
+                        src="https://cdn.shopify.com/s/files/1/0650/6964/5942/files/subs-usp-free-samples-bottles_64x_eead8abf-4207-4a5d-be1e-55b8acaa9a70.avif?v=1754929141"
+                        alt="Free Samples"
+                      >
+                      <span>FREE Samples</span>
+                    </li>
+                    <li>
+                      <img
+                        width="32"
+                        height="32"
+                        src="https://cdn.shopify.com/s/files/1/0650/6964/5942/files/subs-usp-rewards-coins_64x_e615b3e7-2fc7-4e88-924b-f7a58b356d84.webp?v=1754929113"
+                        alt="Rewards Coins"
+                      >
+                      <span>Earn Rewards on TYB</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  {% render 'love-it' %}
                 </div>
             {% endcase %}
           {% endfor %}
@@ -178,18 +209,20 @@
       </div>
     </div>
   </div>
-  <!-- Start of Judge.me code -->
-  <div style="clear:both"></div>
-  <div
-    id="judgeme_product_reviews"
-    class="jdgm-widget jdgm-review-widget"
-    data-product-title="{{ product.title | escape }}"
-    data-id="{{ product.id }}"
-    data-auto-install="false"
-  >
-    {{ product.metafields.judgeme.widget }}
+  <div class="width-base mx-auto">
+    <!-- Start of Judge.me code -->
+    <div style="clear:both"></div>
+    <div
+      id="judgeme_product_reviews"
+      class="jdgm-widget jdgm-review-widget"
+      data-product-title="{{ product.title | escape }}"
+      data-id="{{ product.id }}"
+      data-auto-install="false"
+    >
+      {{ product.metafields.judgeme.widget }}
+    </div>
+    <!-- End of Judge.me code -->
   </div>
-  <!-- End of Judge.me code -->
 </div>
 
 {% schema %}

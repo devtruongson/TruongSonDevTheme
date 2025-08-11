@@ -22,6 +22,12 @@
     margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 576px) {
+    .product__title {
+        font-size: 3.2rem;
+    }
+}
+
 .product__price {
     margin-bottom: 1rem;
 }
@@ -54,13 +60,23 @@
     }
 }
 
+@media screen and (max-width: 576px) {
+    .product__wrapper {
+        grid-column-gap: 0;
+        -moz-column-gap: 0;
+        column-gap     : 0;
+    }
+}
 
 .product__media {
     --product-thumbnails-width: 59px;
+    margin                    : 0 !important;
     margin-bottom             : 24px;
     padding                   : 0;
-    width                     : 100%
+    width                     : 100% !important
 }
+
+
 
 @media screen and (max-width: 749px) {
     .product__media {
@@ -128,5 +144,223 @@
 @media screen and (min-width: 750px) {
     .product__details h1 {
         margin-bottom: 16px
+    }
+}
+
+.product__usps ul {
+    display: flex;
+    padding: 0;
+    margin : 0;
+}
+
+.product__usps ul li {
+    display    : flex;
+    align-items: center;
+    gap        : 8px;
+    width      : calc(100% / 3);
+}
+
+.product__usps ul li img {
+    width      : 32px;
+    height     : 32px;
+    flex-shrink: 0;
+    transform  : scale(1.1);
+}
+
+.product__usps ul li span {
+    font-size  : 1.4rem;
+    line-height: 2.2rem;
+}
+
+.product__accordion-title {
+    align-items    : center;
+    border-bottom  : 1px solid rgb(157, 157, 157);
+    cursor         : pointer;
+    display        : flex;
+    font-family    : SofiaPro-SemiBold, helvetica, arial, sans-serif;
+    font-size      : 1.6rem;
+    justify-content: space-between;
+    letter-spacing : 0.016rem;
+    line-height    : 2.2rem;
+    margin         : 22px 0px 20px;
+    padding        : 11px 27px 11px 0px;
+    position       : relative;
+    text-transform : uppercase;
+    width          : 100%;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion-title {
+        margin: 30px 0px;
+    }
+}
+
+.product__accordion--details .product__accordion-title {
+    margin-bottom: 17px;
+    margin-top   : 0px;
+}
+
+.product__accordion--promises .product__accordion-title {
+    margin-top: 27px;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--promises .product__accordion-title {
+        margin-top: 34px;
+    }
+}
+
+.product__accordion--product-use .product__accordion-title {
+    margin-top: 39px;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--product-use .product__accordion-title {
+        margin-top: 42px;
+    }
+}
+
+.product__accordion-title::-webkit-details-marker {
+    display: none;
+}
+
+.product__accordion-title svg {
+    display : block;
+    position: absolute;
+    right   : -3px;
+    top     : calc(50% - 8px);
+}
+
+
+.product__accordion-details {
+    counter-reset: section 0;
+    list-style   : none;
+}
+
+.product__accordion--promises .product__accordion-details {
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: center;
+    margin-bottom  : -20px;
+}
+
+@media screen and (min-width: 425px) {
+    .product__accordion--promises .product__accordion-details {
+        margin   : 0px auto;
+        max-width: 320px;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--promises .product__accordion-details {
+        gap   : 42px;
+        margin: -12px auto 0px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .product__accordion--promises .product__accordion-details {
+        gap            : 26px;
+        justify-content: space-between;
+        max-width      : none;
+    }
+}
+
+.product__accordion--product-use .product__accordion-details {
+    margin-bottom: 25px;
+    margin-top   : -2px;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--product-use .product__accordion-details {
+        margin-bottom: 52px;
+        margin-top   : -9px;
+    }
+}
+
+.product__accordion--key-ingredients .product__accordion-details {
+    margin-bottom: 24px;
+    margin-top   : 30px;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--key-ingredients .product__accordion-details {
+        margin-bottom: 64px;
+        margin-top   : -4px;
+    }
+}
+
+.product__accordion--full-ingredients .product__accordion-details {
+    margin-bottom: 34px;
+    margin-top   : 22px;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--full-ingredients .product__accordion-details {
+        margin-top: -9px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .product__accordion--full-ingredients .product__accordion-details {
+        margin-bottom: 145px;
+    }
+}
+
+.product__accordion--details .product__accordion-details p {
+    margin-bottom: 24px;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--details .product__accordion-details p {
+        font-family: SofiaPro-Regular, helvetica, arial, sans-serif;
+        font-size  : 1.6rem;
+        line-height: 2.4rem;
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .product__accordion--product-use .product__accordion-details p {
+        font-family: SofiaPro-Regular, helvetica, arial, sans-serif;
+        font-size  : 1.6rem;
+        line-height: 2.4rem;
+    }
+}
+
+.product__accordion--full-ingredients .product__accordion-details p {
+    font-family: SofiaPro-Regular, helvetica, arial, sans-serif;
+    font-size  : 1.6rem;
+    line-height: 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--full-ingredients .product__accordion-details p {
+        font-family: SofiaPro-Regular, helvetica, arial, sans-serif;
+        font-size  : 1.6rem;
+        line-height: 2.8rem;
+    }
+}
+
+.product__accordion-details p strong {
+    font-family: SofiaPro-Bold, helvetica, arial, sans-serif;
+}
+
+[dir="ltr"] .product__accordion--details .product__accordion-details ul {
+    padding-left: revert;
+}
+
+[dir="rtl"] .product__accordion--details .product__accordion-details ul {
+    padding-right: revert;
+}
+
+.product__accordion--details .product__accordion-details ul {
+    margin-bottom: 24px;
+}
+
+@media screen and (min-width: 750px) {
+    .product__accordion--details .product__accordion-details ul {
+        font-family: SofiaPro-Regular, helvetica, arial, sans-serif;
+        font-size  : 1.6rem;
+        line-height: 2.4rem;
     }
 }
