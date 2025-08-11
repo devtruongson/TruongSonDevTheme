@@ -172,6 +172,29 @@
                 <div class="product__description rte">
                   {{ product.description }}
                 </div>
+              {% when 'vendor' %}
+                {% if product.vendor %}
+                  <div class="product__vendor">
+                    <span>{{ product.vendor }}</span>
+                  </div>
+                {% endif %}
+
+              {% when 'quantity' %}
+                <div class="product__quantity">
+                  <label for="Quantity">Quantity</label>
+                  <div class="quantity-wrapper">
+                    <button type="button" class="quantity-btn minus">-</button>
+                    <input
+                      type="number"
+                      name="quantity"
+                      id="Quantity"
+                      value="1"
+                      min="1"
+                      class="quantity-input"
+                    >
+                    <button type="button" class="quantity-btn plus">+</button>
+                  </div>
+                </div>
             {% endcase %}
           {% endfor %}
         </div>
