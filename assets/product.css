@@ -22,6 +22,12 @@
     margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 576px) {
+    .product__title{
+        font-size: 3.2rem;
+    }
+}
+
 .product__price {
     margin-bottom: 1rem;
 }
@@ -54,13 +60,23 @@
     }
 }
 
+@media screen and (max-width: 576px) {
+    .product__wrapper {
+        grid-column-gap      : 0;
+        -moz-column-gap      : 0;
+        column-gap           : 0;
+    }
+}
 
 .product__media {
     --product-thumbnails-width: 59px;
+    margin: 0 !important;
     margin-bottom             : 24px;
     padding                   : 0;
-    width                     : 100%
+    width                     : 100% !important
 }
+
+
 
 @media screen and (max-width: 749px) {
     .product__media {

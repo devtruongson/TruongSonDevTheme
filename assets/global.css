@@ -10,12 +10,22 @@
 }
 
 html {
-    box-sizing: border - box;
+    box-sizing: border-box;
     font-size : 62.5%;
 }
 
 .main-theme {
     padding-top: 160px;
+}
+
+@media screen and (max-width: 576px) {
+    .main-theme {
+        padding-top: 60px;
+    }
+}
+
+.xs\:flex-col{
+    flex-direction: column;
 }
 
 @media screen and (min-width:750px) {
@@ -83,6 +93,8 @@ ul {
     padding: 54px 0;
 }
 
+
+
 @media screen and (min-width: 1400px) {
     .width-base {
         max-width: 1602px;
@@ -94,6 +106,20 @@ ul {
     border-right: 1px solid #000
 }
 
+@media screen and (max-width: 576px) {
+    .mb-hidden{
+        display: none !important; 
+    }
+
+    .mb-center {
+        align-items: center;
+    }
+
+    .width-base{
+        max-width: 100%;
+        padding: 0 calc(var(--wrapper-padding-x)/2);
+    }
+}
 
 .btn {
     align-items        : center;
