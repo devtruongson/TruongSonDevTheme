@@ -23,16 +23,14 @@ html {
         padding-top: 60px;
     }
 
-    .xs\:flex-col{
+    .xs\:flex-col {
         flex-direction: column;
     }
 
-    .xs\:mr-\[12px\]{
+    .xs\:mr-\[12px\] {
         margin-right: 12px;
     }
 }
-
-
 
 @media screen and (min-width:750px) {
     :root {
@@ -113,17 +111,17 @@ ul {
 }
 
 @media screen and (max-width: 576px) {
-    .mb-hidden{
-        display: none !important; 
+    .mb-hidden {
+        display: none !important;
     }
 
     .mb-center {
         align-items: center;
     }
 
-    .width-base{
+    .width-base {
         max-width: 100%;
-        padding: 0 calc(var(--wrapper-padding-x)/2);
+        padding  : 0 calc(var(--wrapper-padding-x)/2);
     }
 }
 
