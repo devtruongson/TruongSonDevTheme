@@ -54,7 +54,11 @@
                 "enable_sticky_info": true,
                 "gallery_layout": "stacked"
             }
+        },
+        "comment": {
+            "type": "comment",
+            "settings": {}
         }
     },
-    "order": ["main"]
+    "order": ["main", "comment"]
 }

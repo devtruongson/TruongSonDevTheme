@@ -1,0 +1,166 @@
+<!-- FAQ Component -->
+<div class="w-full mx-auto" style="background-color: #FFF8F0; max-width: 800px; padding: 30px 20px">
+  <!-- HOW TO USE section -->
+  <div class="mb-4">
+    <button
+      class="w-full text-left py-4 border-b flex justify-between items-center transition-all duration-300 cursor-pointer"
+      style="color: #000000; border-color: #E0E0E0; font-weight: 600; font-size: 18px;"
+      aria-expanded="false"
+      aria-controls="faq-answer-1"
+      onclick="toggleFAQ(this)"
+    >
+      <span>HOW TO USE</span>
+      <span class="transform transition-transform duration-300">
+        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 7L7 1L13 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+
+    <div
+      id="faq-answer-1"
+      class="overflow-hidden max-h-0 transition-all duration-500"
+      aria-hidden="true"
+    >
+      <div class="px-2.5 pt-0">
+        <div class="flex flex-col space-y-5">
+          <!-- Step 1 -->
+          <div class="flex items-start gap-4">
+            <div
+              class="flex-shrink-0 flex items-center justify-center rounded-full"
+              style="background-color: #F9E4AE; color: #000000; width: 50px; height: 50px; font-size: 24px; font-weight: bold;"
+            >
+              1
+            </div>
+            <div class="pt-2.5" style="font-size: 16px;">
+              Section dry hair. Take one dropper of oil into the palms of your hands. Massage into your roots in
+              circular motions, section by section. Inhale deeply and enjoy the grounding aroma.
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex items-start gap-4">
+            <div
+              class="flex-shrink-0 flex items-center justify-center rounded-full"
+              style="background-color: #F9E4AE; color: #000000; width: 50px; height: 50px; font-size: 24px; font-weight: bold;"
+            >
+              2
+            </div>
+            <div class="pt-2.5" style="font-size: 16px;">
+              Leave on for a minimum of five minutes, or overnight for the best results.
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex items-start gap-4">
+            <div
+              class="flex-shrink-0 flex items-center justify-center rounded-full"
+              style="background-color: #F9E4AE; color: #000000; width: 50px; height: 50px; font-size: 24px; font-weight: bold;"
+            >
+              3
+            </div>
+            <div class="pt-2.5" style="font-size: 16px;">Rinse thoroughly before cleansing with shampoo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INGREDIENTS section -->
+  <div class="mb-4">
+    <button
+      class="w-full text-left py-4 border-b flex justify-between items-center transition-all duration-300 cursor-pointer"
+      style="color: #000000; border-color: #E0E0E0; font-weight: 600; font-size: 18px;"
+      aria-expanded="false"
+      aria-controls="faq-answer-2"
+      onclick="toggleFAQ(this)"
+    >
+      <span>FULL INGREDIENTS LIST</span>
+      <span class="transform transition-transform duration-300">
+        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 7L7 1L13 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+
+    <div
+      id="faq-answer-2"
+      class="overflow-hidden max-h-0 transition-all duration-500"
+      aria-hidden="true"
+    >
+      <div class="px-2.5 pt-0">
+        <div class="leading-relaxed" style="font-size: 16px;">
+          <p>
+            Caprylic/Capric Triglyceride, Carthamus Tinctorius (Safflower) Seed Oil, Olea Europaea (Olive) Fruit Oil,
+            Withania Somnifera Root Extract, Simmondsia Chinensis (Jojoba) Seed Oil, Ricinus Communis (Castor) Seed Oil,
+            Vitis Vinifera (Grape) Seed Oil, Phyllanthus Emblica Fruit Extract, Sesamum Indicum (Sesame) Seed Oil,
+            Bacopa Monnieri (Brahmi) Leaf Extract, Eclipta Prostrata (Bhringraj) Extract, Beta-Sitosterol, Aegle
+            Marmelos Root Extract, Desmodium Gangeticum Root Extract, Gmelina Arborea Root Extract, Premna Serratifolia
+            Root Extract, Solanum Indicum Root Extract, Solanum Xanthocarpum Root Extract, Stereospermum Suaveolens Root
+            Extract, Oroxylum Indicum Root Extract, Tribulus Terrestris Root Extract, Uraria Picta Root Extract, Parfum
+            (Fragrance), Tocopherol, Phenoxyethanol, Squalene, Glycyrrhiza Glabra (Licorice) Root Extract, Benzyl
+            Salicylate, Benzyl Benzoate.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleFAQ(button) {
+    // Toggle aria-expanded
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', !expanded);
+
+    // Get and toggle the answer
+    const answerId = button.getAttribute('aria-controls');
+    const answer = document.getElementById(answerId);
+
+    // Toggle rotation of icon
+    const icon = button.querySelector('span:last-child');
+
+    if (expanded) {
+      // Closing
+      answer.style.maxHeight = '0px';
+      answer.style.paddingTop = '0px';
+      answer.style.paddingBottom = '0px';
+      icon.style.transform = 'rotate(0deg)';
+    } else {
+      // Opening
+      answer.style.maxHeight = '2000px';
+      answer.style.paddingTop = '20px';
+      answer.style.paddingBottom = '20px';
+      icon.style.transform = 'rotate(180deg)';
+
+      // Close other FAQs
+      const container = button.closest('div');
+      const questions = container.querySelectorAll('button[aria-expanded]');
+      questions.forEach((q) => {
+        if (q !== button && q.getAttribute('aria-expanded') === 'true') {
+          q.setAttribute('aria-expanded', 'false');
+          const id = q.getAttribute('aria-controls');
+          const ans = document.getElementById(id);
+          const qIcon = q.querySelector('span:last-child');
+
+          ans.style.maxHeight = '0px';
+          ans.style.paddingTop = '0px';
+          ans.style.paddingBottom = '0px';
+          qIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
+
+    answer.setAttribute('aria-hidden', expanded);
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', function () {
+    const accordions = document.querySelectorAll('[id^="faq-answer-"]');
+    accordions.forEach((acc) => {
+      acc.style.maxHeight = '0px';
+      acc.style.paddingTop = '0px';
+      acc.style.paddingBottom = '0px';
+    });
+  });
+</script>
