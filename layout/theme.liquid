@@ -1,7 +1,10 @@
 <html>
   <head>
     {{ content_for_header }}
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Resource Hints cho Analytics -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="dns-prefetch" href="https://connect.facebook.net" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Tailwind CSS code -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'global.css' | asset_url | stylesheet_tag }}
@@ -18,6 +21,38 @@
     <script src="{{ 'product-swiper.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'header.js' | asset_url }}" defer="defer"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=IG_GOOGLE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-ID');
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.defer = true;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '123456789012345');
+      fbq('track', 'PageView');
+    </script>
   </head>
 
   <body>

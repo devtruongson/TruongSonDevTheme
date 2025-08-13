@@ -1,0 +1,47 @@
+{% if template == 'product' %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fbq('track', 'ViewContent', {
+        content_type: 'product',
+        content_ids: ['{{ product.id }}'],
+        content_name: '{{ product.title | escape }}',
+        value: {{ product.price | money_without_currency | remove: ',' }},
+        currency: '{{ shop.currency }}'
+      });
+
+      gtag('event', 'view_item', {
+        currency: '{{ shop.currency }}',
+        value: {{ product.price | money_without_currency | remove: ',' }},
+        items: [{
+          item_id: '{{ product.id }}',
+          item_name: '{{ product.title | escape }}',
+          price: {{ product.price | money_without_currency | remove: ',' }}
+        }]
+      });
+
+      const addToCartForm = document.querySelector('form[action*="/cart/add"]');
+      if (addToCartForm) {
+        addToCartForm.addEventListener('submit', function() {
+          fbq('track', 'AddToCart', {
+            content_type: 'product',
+            content_ids: ['{{ product.id }}'],
+            content_name: '{{ product.title | escape }}',
+            value: {{ product.price | money_without_currency | remove: ',' }},
+            currency: '{{ shop.currency }}'
+          });
+
+          gtag('event', 'add_to_cart', {
+            currency: '{{ shop.currency }}',
+            value: {{ product.price | money_without_currency | remove: ',' }},
+            items: [{
+              item_id: '{{ product.id }}',
+              item_name: '{{ product.title | escape }}',
+              price: {{ product.price | money_without_currency | remove: ',' }},
+              quantity: 1
+            }]
+          });
+        });
+      }
+    });
+  </script>
+{% endif %}
